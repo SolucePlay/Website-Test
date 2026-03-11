@@ -1,0 +1,1090 @@
+@charset "UTF-8";
+
+
+.fond-couleur-rouge {
+    background-color: red;
+}
+
+/* ========================================
+   📚 PORTFOLIO STARTER KIT - CSS PÉDAGOGIQUE
+   ======================================== 
+   
+   📖 COMMENT LIRE CE FICHIER ?
+   
+   Ce fichier CSS est organisé en sections logiques :
+   1. :root → Les VARIABLES (couleurs, espacements, etc.)
+   2. BASE STYLES → Les styles par défaut
+   3. TYPOGRAPHY → Les titres et textes
+   4. LAYOUT → Comment organiser la page
+   5. HEADER, BIO, SKILLS, etc. → Les différentes parties de ta page
+   6. RESPONSIVE → L'adaptation au téléphone
+   7. UTILITAIRES → Des classes réutilisables
+   
+   💡 TIP: Cherche le mot-clé avec Ctrl+F pour trouver rapidement !
+   ======================================== */
+
+
+/* ========================================
+   🎨 SECTION 1 : LES VARIABLES (Design System)
+   ======================================== 
+   
+   Les variables CSS sont comme des "boîtes de rangement" pour tes couleurs,
+   espacements et polices de caractères.
+   
+   AVANTAGE: Tu changes UNE FOIS la variable et ça change PARTOUT.
+   
+   Exemple: Si tu changes --color-primary de #2184b2 à #ff0000,
+   TOUS les bleus deviennent rouges automatiquement.
+   
+   Utilisation: background: var(--color-primary);
+   ======================================== */
+
+:root {
+    /* 🎨 COULEURS
+       Stocke toutes les couleurs réutilisables dans la page.
+       Format: --color-[nom] : [code couleur]
+    */
+    --color-primary: #2184b2;
+    /* Bleu principal (buttons, liens) */
+    --color-primary-dark: #1a6a8f;
+    /* Bleu foncé (au survol) */
+    --color-primary-light: #5ba3c7;
+    /* Bleu clair (gradient) */
+    --color-accent: #e67e22;
+    /* Orange (accents, underline) */
+    --color-bg: #f8f9fa;
+    /* Fond gris clair (arrière-plan) */
+    --color-surface: #ffffff;
+    /* Blanc (cartes, sections) */
+    --color-text: #2c3e50;
+    /* Texte principal (gris foncé) */
+    --color-text-light: #7f8c8d;
+    /* Texte secondaire (gris clair) */
+    --color-border: #ecf0f1;
+    /* Bordures légères */
+    --color-success: #27ae60;
+    /* Vert (succès, validations) */
+
+    /* 🔤 TYPOGRAPHIE
+       Définit les polices et tailles de texte réutilisables.
+    */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* ↑ Polices système modernes et lisibles sur tous les appareils */
+
+    --font-family-mono: 'Monaco', 'Courier New', monospace;
+    /* ↑ Police mono-espacée (pour le code) */
+
+    /* Tailles de police */
+    --font-size-xs: 12px;
+    /* Très petite (petits textes) */
+    --font-size-sm: 14px;
+    /* Petite */
+    --font-size-base: 16px;
+    /* Normal (taille par défaut) */
+    --font-size-lg: 20px;
+    /* Grand (titres sections) */
+    --font-size-xl: 28px;
+    /* Très grand (sous-titre header) */
+    --font-size-2xl: 36px;
+    /* Énorme (titre principal) */
+
+    /* Épaisseur du texte */
+    --font-weight-normal: 400;
+    /* Texte normal */
+    --font-weight-medium: 500;
+    /* Texte un peu gras */
+    --font-weight-bold: 700;
+    /* Texte gras */
+
+    /* 📏 ESPACEMENTS
+       Utilise ces variables pour l'alignement et les marges.
+       Espace: de 4px (très serré) à 48px (très aéré).
+    */
+    --space-4: 4px;
+    /* Très petit espacement */
+    --space-8: 8px;
+    /* Petit */
+    --space-12: 12px;
+    --space-16: 16px;
+    --space-20: 20px;
+    --space-24: 24px;
+    --space-32: 32px;
+    --space-40: 40px;
+    --space-48: 48px;
+    /* Grand espacement */
+
+    /* 🔲 COINS ARRONDIS (border-radius)
+       Plus le nombre est grand, plus les coins sont arrondis.
+    */
+    --radius-sm: 4px;
+    /* Légèrement arrondi */
+    --radius-base: 8px;
+    /* Normal */
+    --radius-md: 12px;
+    /* Plus arrondi */
+    --radius-lg: 16px;
+    /* Très arrondi */
+    --radius-full: 9999px;
+    /* Parfaitement rond */
+
+    /* 🌑 OMBRES (box-shadow)
+       Crée de la profondeur en ajoutant des ombres.
+       Plus l'ombre est grande, plus l'élément "flotte".
+    */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    /* ↑ Ombre très subtile (pour les cartes) */
+
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* ↑ Ombre moyenne (au survol) */
+
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* ↑ Ombre forte (éléments importants) */
+
+    /* ⏱️ ANIMATIONS
+       Contrôle la vitesse et le style des transitions.
+    */
+    --duration-fast: 150ms;
+    /* Rapide */
+    --duration-normal: 250ms;
+    /* Normal */
+    --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    /* ↑ Courbe d'accélération fluide pour les animations */
+}
+
+
+/* ========================================
+   ⚙️ SECTION 2 : BASE STYLES
+   ======================================== 
+   
+   Ces styles s'appliquent à TOUS les éléments de la page.
+   C'est le "fondement" sur lequel le reste repose.
+   ======================================== */
+
+* {
+    /* Enlève l'espacement par défaut */
+    box-sizing: border-box;
+    cursor: url("https://soluceplay.go.yo.fr/assets/img/cursor.svg"), auto !important;
+    /* Les bordures ne rajoutent pas de taille */
+}
+
+html {
+    scroll-behavior: smooth;
+    /* Le scroll se fait progressivement, pas brutal */
+}
+
+body {
+    /* Le corps de la page */
+    font-family: var(--font-family-base);
+    /* Applique la police par défaut */
+    font-size: var(--font-size-base);
+    /* 16px par défaut */
+    line-height: 1.6;
+    /* 1.5x la hauteur de police = lisible */
+    color: var(--color-text);
+    /* Couleur du texte gris foncé */
+    background-color: var(--color-bg);
+    /* Fond gris clair */
+}
+
+
+/* ========================================
+   🔤 SECTION 3 : TYPOGRAPHY
+   ======================================== 
+   
+   Définit comment les titres (h1, h2...) et textes (p, a) s'affichent.
+   ======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* Style appliqué à TOUS les titres */
+    line-height: 1.2;
+    /* Titres plus compacts que le texte normal */
+    font-weight: var(--font-weight-bold);
+    /* Les titres sont gras */
+    color: var(--color-text);
+    /* Couleur texte normale */
+    margin-bottom: var(--space-16);
+    /* Espace après chaque titre */
+}
+
+h1 {
+    /* Le PLUS grand titre */
+    font-size: var(--font-size-2xl);
+    /* 36px */
+    letter-spacing: -0.5px;
+    /* Les lettres se rapprochent légèrement (élégant) */
+}
+
+h2 {
+    /* Deuxième niveau de titre */
+    font-size: var(--font-size-xl);
+    /* 28px */
+    color: var(--color-primary);
+    /* Bleu principal */
+}
+
+h3 {
+    /* Titres de sections */
+    font-size: var(--font-size-lg);
+    /* 20px */
+    font-weight: var(--font-weight-bold);
+}
+
+h4 {
+    /* Petits titres */
+    font-size: var(--font-size-base);
+    /* 16px */
+    font-weight: var(--font-weight-medium);
+}
+
+p {
+    /* Paragraphes */
+    margin-bottom: var(--space-16);
+    /* Espace après chaque paragraphe */
+    color: var(--color-text-light);
+    /* Gris clair (moins contrasté) */
+    line-height: 1.7;
+    /* Plus d'espace entre les lignes = plus lisible */
+}
+
+.nav:hover {
+        border: solid 0.5px;
+    border-radius: 40px;
+    padding: 15px;
+    text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.nav {
+        border: solid 0.5px;
+    border-radius: 40px;
+    padding: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-smooth);
+    font-weight: var(--font-weight-medium);
+}
+
+.bodytext {
+    /* Les liens */
+    color: var(--color-primary);
+    /* Bleu par défaut */
+    text-decoration: none;
+    /* Pas de soulignement */
+    transition: color var(--duration-fast) var(--ease-smooth);
+    /* ↑ La couleur change progressivement au survol (pas d'à-coup) */
+    font-weight: var(--font-weight-medium);
+    /* Liens un peu gras = visible */
+}
+
+.bodytext:hover {
+    text-decoration: none;
+}
+
+a:hover {
+    /* Au survol du lien */
+    color: var(--color-accent);
+    /* Change en orange */
+    text-decoration: underline;
+    /* Ajoute un soulignement */
+}
+
+
+/* ========================================
+   📐 SECTION 4 : LAYOUT (Organisation de la page)
+   ======================================== 
+   
+   Utilise Flexbox pour organiser la structure globale.
+   ======================================== */
+
+body {
+    display: flex;
+    /* Active Flexbox (disposition flexible) */
+    flex-direction: column;
+    /* Les éléments s'empilent verticalement */
+    min-height: 100vh;
+    /* La page prend au MOINS la hauteur de l'écran */
+}
+
+/* Résultat: Le footer reste en bas même si peu de contenu */
+
+main {
+    flex: 1;
+    /* main prend tout l'espace disponible */
+}
+
+/* Résultat: Le footer est repoussé en bas */
+
+
+/* ========================================
+   🎯 SECTION 5 : HEADER (En-tête / Banneau principal)
+   ======================================== 
+   
+   C'est la première chose qu'on voit: photo, nom, titre.
+   ======================================== */
+
+header {
+    /* L'en-tête */
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    /* ↑ Gradient bleu (du bleu clair au bleu foncé, en diagonale) */
+
+    color: white;
+    /* Texte blanc sur fond bleu */
+
+    text-align: center;
+    /* Tout centré */
+    box-shadow: var(--shadow-md);
+    /* Ombre subtile pour la profondeur */
+    border-radius: 32px;
+}
+
+header h1 {
+    /* Le nom dans le header */
+    color: white;
+    font-size: var(--font-size-2xl);
+    /* Petit espace après le nom */
+    letter-spacing: -1px;
+    /* Lettres rapprochées */
+    margin: unset;
+}
+
+header h2 {
+    /* Le titre professionnel */
+    color: rgba(255, 255, 255, 0.9);
+    /* ↑ Blanc mais légèrement transparent (moins contrasté que le nom) */
+
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-normal);
+    /* Pas gras */
+    margin-bottom: var(--space-24);
+    /* Espace avant la photo */
+}
+
+/* Avatar Image */
+header img {
+    /* La photo de profil */
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    /* 50% = cercle parfait */
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    /* ↑ Bordure blanche semi-transparente autour de la photo */
+
+    object-fit: cover;
+    /* Recadre l'image en carré (pas d'étirement) */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* ↑ Ombre sous la photo pour l'effet "flottant" */
+
+    transition: transform var(--duration-normal) var(--ease-smooth);
+    /* ↑ La transformation se fera progressivement au survol */
+}
+
+header img:hover {
+    /* Au survol de la photo */
+    transform: scale(1.05);
+    /* La photo grossit de 5% (zoom effet) */
+}
+
+
+/* ========================================
+   📄 SECTION 6 : MAIN CONTENT (Sections principales)
+   ======================================== 
+   
+   Structure générale du contenu (max-width, animation, etc.)
+   ======================================== */
+
+main {
+    max-width: 900px;
+    /* Maximum 900px de largeur (pas infini) */
+    margin: var(--space-48) auto;
+    /* Centré avec espace haut/bas */
+    padding: 0 var(--space-24);
+    /* Espace horizontal */
+}
+
+section {
+    margin-bottom: var(--space-48);
+    /* Espace entre chaque section */
+    animation: fadeIn 0.6s ease-in;
+    /* ↑ Les sections "apparaissent" progressivement au chargement */
+}
+
+section h3 {
+    /* Titres des sections (Bio, Compétences, etc.) */
+    position: relative;
+    /* Permet de positionner l'underline */
+    padding-bottom: var(--space-12);
+    /* Espace pour l'underline */
+    margin-bottom: var(--space-24);
+    /* Espace avant le contenu */
+}
+
+/* Underline accent under section titles */
+section h3::after {
+    /* Crée une barre orange sous chaque titre de section */
+    content: '';
+    /* Crée un élément vide */
+    position: absolute;
+    /* Positionné par rapport à h3 */
+    bottom: 0;
+    /* Tout en bas */
+    left: 0;
+    /* À gauche */
+    width: 60px;
+    /* Largeur: 60px */
+    height: 4px;
+    /* Épaisseur: 4px */
+    background: var(--color-accent);
+    /* Orange */
+    border-radius: var(--radius-sm);
+    /* Coins arrondis */
+}
+
+
+/* ========================================
+   👤 SECTION 7 : BIO SECTION
+   ======================================== 
+   
+   La courte présentation de toi.
+   ======================================== */
+
+.bio {
+    /* Conteneur de la bio */
+    background: var(--color-surface);
+    /* Fond blanc */
+    padding: var(--space-32);
+    /* Espace intérieur générique */
+    border-radius: var(--radius-md);
+    /* Coins arrondis */
+    box-shadow: var(--shadow-sm);
+    /* Légère ombre */
+    border-left: 4px solid var(--color-primary);
+    /* ↑ Barre bleue à gauche = accent visuel */
+}
+
+.bio p {
+    /* Texte de la bio */
+    color: var(--color-text);
+    /* Gris foncé = texte normal */
+    line-height: 1.8;
+    /* Aéré */
+    font-size: var(--font-size-base);
+    margin: 0;
+    /* Pas d'espace après */
+}
+
+
+/* ========================================
+   🎯 SECTION 8 : COMPETENCES / SKILLS
+   ======================================== 
+   
+   Affiche les technos que tu connais (HTML, CSS, JavaScript...)
+   ======================================== */
+
+/* Layout en grille pour les compétences */
+.skills-grid {
+    /* Disposition en grille responsive */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    /* ↑ Crée des colonnes de min 180px, qui s'adaptent à l'espace */
+
+    gap: var(--space-16);
+    /* Espace entre les cartes */
+    margin-top: var(--space-24);
+}
+
+.skill-card {
+    /* Carte pour une compétence */
+    background: var(--color-surface);
+    /* Fond blanc */
+    padding: var(--space-20);
+    /* Espace intérieur */
+    border-radius: var(--radius-md);
+    /* Coins arrondis */
+    box-shadow: var(--shadow-sm);
+    /* Ombre subtile */
+    text-align: center;
+    /* Contenu centré */
+    transition: all var(--duration-normal) var(--ease-smooth);
+    /* ↑ Toutes les propriétés changent progressivement au survol */
+
+    border: 2px solid transparent;
+    /* Bordure invisible par défaut */
+}
+
+.skill-card:hover {
+    /* Au survol de la carte */
+    box-shadow: var(--shadow-lg);
+    /* Ombre plus forte */
+    border-color: var(--color-accent);
+    /* Bordure orange visible */
+    transform: translateY(-4px);
+    /* La carte monte de 4px */
+}
+
+.skill-card h4 {
+    /* Nom de la compétence */
+    color: var(--color-primary);
+    /* Bleu */
+    margin-bottom: var(--space-8);
+    font-size: var(--font-size-base);
+}
+
+.skill-card p {
+    /* Description courte */
+    font-size: var(--font-size-sm);
+    margin: 0;
+}
+
+/* Alternative: Liste avec badges colorés */
+.skills-list {
+    /* Conteneur horizontal des badges */
+    display: flex;
+    flex-wrap: wrap;
+    /* Les badges passent à la ligne si pas assez de place */
+    gap: var(--space-12);
+    /* Espace entre les badges */
+    margin-top: var(--space-16);
+}
+
+.skill-badge {
+    /* Badge de technologie (HTML, CSS, JavaScript...) */
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    /* ↑ Gradient bleu */
+
+    color: white;
+    padding: var(--space-8) var(--space-16);
+    /* Espace intérieur */
+    border-radius: var(--radius-full);
+    /* Complètement arrondi */
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.skill-badge:hover {
+    /* Au survol du badge */
+    box-shadow: var(--shadow-md);
+    /* Ombre visible */
+    transform: scale(1.08);
+    /* Badge grossit de 8% */
+}
+
+
+/* ========================================
+   🖼️ SECTION 9 : PROJECTS (Vos projets)
+   ======================================== 
+   
+   Grille de cartes pour montrer tes projets.
+   ======================================== */
+
+.projects-grid {
+    /* Grille responsive pour les projets */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* ↑ Colonnes min 280px, s'adaptent */
+
+    gap: var(--space-24);
+    /* Espace généreux entre les projets */
+    margin-top: var(--space-24);
+}
+
+.project-card {
+    /* Carte de projet */
+    background: var(--color-surface);
+    /* Fond blanc */
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    /* Les images collent aux coins arrondis */
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.project-card:hover {
+    /* Au survol de la carte */
+    box-shadow: var(--shadow-lg);
+    /* Ombre plus forte */
+    transform: translateY(-8px);
+    /* La carte monte de 8px */
+}
+
+.project-card img {
+    /* Image du projet */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* Recadre l'image */
+    display: block;
+    /* Enlève l'espace blanc sous l'image */
+}
+
+.project-card-content {
+    /* Contenu textuel de la carte */
+    padding: var(--space-20);
+}
+
+.project-card h4 {
+    /* Titre du projet */
+    color: var(--color-text);
+    margin-bottom: var(--space-8);
+}
+
+.project-card p {
+    /* Description du projet */
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-12);
+}
+
+.project-link {
+    /* Lien "Voir plus" */
+    display: inline-block;
+    color: var(--color-primary);
+    /* Bleu */
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-sm);
+    transition: all var(--duration-fast) var(--ease-smooth);
+}
+
+.project-link:hover {
+    /* Au survol du lien */
+    color: var(--color-accent);
+    /* Devient orange */
+}
+
+
+/* ========================================
+   📧 SECTION 10 : CONTACT
+   ======================================== 
+   
+   Les moyens de te contacter (email, LinkedIn, GitHub)
+   ======================================== */
+
+.contact-links {
+    /* Conteneur des liens de contact */
+    display: flex;
+    flex-wrap: wrap;
+    /* Passe à la ligne si pas de place */
+    gap: var(--space-16);
+    margin-top: var(--space-24);
+}
+
+.contact-link {
+    /* Chaque lien de contact */
+    display: inline-flex;
+    align-items: center;
+    /* Centre verticalement */
+    gap: var(--space-8);
+    /* Espace entre l'icône et le texte */
+    background: var(--color-surface);
+    /* Fond blanc */
+    padding: var(--space-12) var(--space-20);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.contact-link:hover {
+    /* Au survol */
+    box-shadow: var(--shadow-md);
+    transform: translateX(4px);
+    /* Le lien se décale légèrement à droite */
+    background: var(--color-primary);
+    /* Fond devient bleu */
+}
+
+.contact-link:hover a {
+    /* Le texte du lien au survol */
+    color: white;
+    /* Texte devient blanc */
+}
+
+.contact-link a {
+    /* Le lien de contact */
+    color: var(--color-primary);
+    /* Bleu */
+}
+
+
+/* ========================================
+   🔘 SECTION 11 : BUTTONS
+   ======================================== 
+   
+   Styles pour les boutons réutilisables.
+   ======================================== */
+
+.btn {
+    /* Bouton générique */
+    display: inline-block;
+    padding: var(--space-12) var(--space-24);
+    /* Espace intérieur */
+    border-radius: var(--radius-base);
+    /* Coins légèrement arrondis */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-bold);
+    text-decoration: none;
+    transition: all var(--duration-normal) var(--ease-smooth);
+    border: 2px solid transparent;
+    cursor: pointer;
+    /* La souris devient une main */
+    text-align: center;
+}
+
+.btn-primary {
+    /* Bouton principal (action importante) */
+    background: var(--color-primary);
+    /* Bleu */
+    color: white;
+}
+
+.btn-primary:hover {
+    /* Au survol */
+    background: var(--color-primary-dark);
+    /* Bleu foncé */
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    /* Bouton monte légèrement */
+}
+
+.btn-secondary {
+    /* Bouton secondaire (action moins importante) */
+    background: transparent;
+    /* Pas de fond */
+    color: var(--color-primary);
+    /* Texte bleu */
+    border-color: var(--color-primary);
+    /* Bordure bleue */
+}
+
+.btn-secondary:hover {
+    /* Au survol: le fond se remplite */
+    background: var(--color-primary);
+    color: white;
+}
+
+/* ========================================
+   🔚 SECTION 12 : FOOTER
+   ======================================== 
+   
+   Le bas de page (copyright, etc.)
+   ======================================== */
+
+footer {
+    /* Pied de page */
+    background: var(--color-text);
+    /* Fond gris foncé */
+    color: white;
+    /* Texte blanc */
+    text-align: center;
+    padding: var(--space-24);
+    margin-top: var(--space-48);
+    /* Espace avant le footer */
+    font-size: var(--font-size-sm);
+}
+
+footer p {
+    /* Texte du footer */
+    color: rgba(255, 255, 255, 0.7);
+    /* ↑ Blanc semi-transparent (moins contrasté) */
+    margin: 0;
+}
+
+
+/* ========================================
+   ✨ SECTION 13 : ANIMATIONS
+   ======================================== 
+   
+   Définit les animations réutilisables.
+   ======================================== */
+
+@keyframes fadeIn {
+
+    /* Animation "apparition progressive" */
+    from {
+        opacity: 0;
+        /* Invisible au départ */
+        transform: translateY(10px);
+        /* Commence 10px plus bas */
+    }
+
+    to {
+        opacity: 1;
+        /* Complètement visible */
+        transform: translateY(0);
+        /* Revient à la position normale */
+    }
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 10vw;
+    vertical-align: middle;
+    justify-content: space-between;
+    padding: 12px 2vw;
+}
+
+nav ul li {
+    align-self: center;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Résultat: Les sections "montent" et deviennent visibles progressivement */
+
+
+/* ========================================
+   📱 SECTION 14 : RESPONSIVE DESIGN
+   ======================================== 
+   
+   Adapte la page aux petits écrans (tablette, téléphone).
+   
+   💡 TIP: Nous utilisons "Mobile First" = le CSS ci-dessus 
+   est déjà pour mobile, et ici on AMÉLIORE pour les grands écrans.
+   
+   Les "media queries" = "Si l'écran est plus petit que X pixels..."
+   ======================================== */
+img {
+	width: 200px;
+    border-radius: 32px;
+}
+/* TABLETTES: Écrans de 768px max */
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-32) var(--space-16);
+        /* Moins d'espace */
+    }
+
+    header h1 {
+        font-size: var(--font-size-xl);
+        /* Texte plus petit */
+    }
+
+    header h2 {
+        font-size: var(--font-size-base);
+    }
+
+    header img {
+        width: 100px;
+        /* Photo plus petite */
+        height: 100px;
+    }
+
+    main {
+        margin: var(--space-32) auto;
+        padding: 0 var(--space-16);
+    }
+
+    section {
+        margin-bottom: var(--space-32);
+    }
+
+    .bio {
+        padding: var(--space-20);
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: var(--space-12);
+        /* Espace réduit */
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        /* 1 colonne seulement */
+        gap: var(--space-16);
+    }
+
+    .contact-links {
+        flex-direction: column;
+        /* Empile les liens verticalement */
+        gap: var(--space-12);
+    }
+
+    .contact-link {
+        justify-content: center;
+    }
+}
+
+/* TÉLÉPHONES: Écrans de 480px max */
+@media (max-width: 480px) {
+    header {
+        padding: var(--space-24) var(--space-12);
+        /* Très peu d'espace */
+    }
+
+    header h1 {
+        font-size: var(--font-size-lg);
+        /* Petit */
+    }
+
+    header h2 {
+        font-size: var(--font-size-sm);
+    }
+
+    header img {
+        width: 80px;
+        /* Photo très petite */
+        height: 80px;
+    }
+
+    h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    h2 {
+        font-size: var(--font-size-lg);
+    }
+
+    h3 {
+        font-size: var(--font-size-base);
+    }
+
+    main {
+        margin: var(--space-24) auto;
+        padding: 0 var(--space-12);
+        /* Padding minimal */
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+        /* 1 colonne seulement */
+    }
+
+    .skill-badge {
+        padding: var(--space-6) var(--space-12);
+        font-size: var(--font-size-xs);
+        /* Texte minuscule */
+    }
+
+    footer {
+        padding: var(--space-16);
+    }
+}
+
+
+/* ========================================
+   🛠️ SECTION 15 : UTILITAIRES
+   ======================================== 
+   
+   Des classes réutilisables pour les cas spéciaux.
+   
+   Exemple: <p class="text-center">Texte centré</p>
+   ======================================== */
+
+.text-center {
+    text-align: center;
+    /* Centre le texte */
+}
+
+.text-muted {
+    color: var(--color-text-light);
+    /* Texte gris clair (moins visible) */
+}
+
+/* Marges supérieures */
+.mt-sm {
+    margin-top: var(--space-12);
+}
+
+/* Small */
+.mt-md {
+    margin-top: var(--space-24);
+}
+
+/* Medium */
+.mt-lg {
+    margin-top: var(--space-40);
+}
+
+/* Large */
+
+/* Marges inférieures */
+.mb-sm {
+    margin-bottom: var(--space-12);
+}
+
+.mb-md {
+    margin-bottom: var(--space-24);
+}
+
+.mb-lg {
+    margin-bottom: var(--space-40);
+}
+
+/* Paddings */
+.p-sm {
+    padding: var(--space-12);
+}
+
+.p-md {
+    padding: var(--space-24);
+}
+
+.p-lg {
+    padding: var(--space-40);
+}
+
+/* Coins arrondis */
+.rounded {
+    border-radius: var(--radius-md);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+/* Ombres */
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   🎓 FIN DU FICHIER CSS
+   ======================================== 
+   
+   Bravo ! Tu as parcouru tout le système de design.
+   
+   💡 LES 3 CHOSES À RETENIR:
+   
+   1️⃣ Les VARIABLES (:root) = l'âme du CSS
+      Change UNE variable = tout change automatiquement
+   
+   2️⃣ Les CLASSES réutilisables = la flexibilité
+      .skill-badge, .btn, .contact-link = utilisable partout
+   
+   3️⃣ Le RESPONSIVE DESIGN = accessible sur tous les appareils
+      Les @media queries s'en chargent
+   
+   📚 POUR PROGRESSER:
+   - Modifie les variables et observe les changements
+   - Crée de nouvelles sections en copiant le pattern
+   - Teste sur ton téléphone avec Live Server
+   
+   Bon courage ! 🚀
+   ======================================== */
