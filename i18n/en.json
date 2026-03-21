@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "skills": "Skills",
+    "experience": "Experience",
+    "contact": "Contact",
+    "language":"Language",
+    "theme": "Theme"
+  },
+  "hero": {
+    "view_cv": "View my CV"
+  },
+  "skills": {
+    "title": "Skills",
+    "piano": "Piano",
+    "electricity": "Electricity",
+    "film": "Film"
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "job1": {
+      "company": "ELEC'N CAUX",
+      "task": "Cable routing",
+      "date": "02/2024 - 03/2024"
+    },
+    "job2": {
+      "company": "Garczynski Traploir",
+      "task": "Repairing Christmas lights",
+      "date": "06/2024 - 07/2024"
+    }
+  },
+  "contact": {
+    "title": "Contact"
+  }
+}

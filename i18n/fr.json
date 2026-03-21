@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "skills": "Compétences",
+    "experience": "Expérience",
+    "contact": "Contact",
+    "language":"Langue",
+    "theme": "Thème"
+  },
+  "hero": {
+    "view_cv": "Voir mon CV"
+  },
+  "skills": {
+    "title": "Compétences",
+    "piano": "Piano",
+    "electricity": "Électricité",
+    "film": "Film"
+  },
+  "experience": {
+    "title": "Expérience Professionnelle",
+    "job1": {
+      "company": "ELEC'N CAUX",
+      "task": "Passage de câble",
+      "date": "02/2024 - 03/2024"
+    },
+    "job2": {
+      "company": "Garczynski Traploir",
+      "task": "Réparation des illuminations de Noël",
+      "date": "06/2024 - 07/2024"
+    }
+  },
+  "contact": {
+    "title": "Contact"
+  }
+}

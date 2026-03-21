@@ -11,8 +11,8 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     rel="stylesheet">
 
-  <link href="style.css" rel="stylesheet">
-  <script type="module" src="index.js"></script>
+  <link href="./css/style.css" rel="stylesheet">
+  <script type="module" src="./js/index.js"></script>
 </head>
 
 <body>
@@ -25,12 +25,28 @@
         <h1>Duncan Langrume</h1>
       </div>
       <div class="right">
-        <md-text-button href="#competences">Compétences</md-text-button>
-        <md-text-button href="#experience">Expérience</md-text-button>
-        <md-text-button href="#contact">Contact</md-text-button>
+        <md-text-button href="#competences" data-i18n="nav.skills">Compétences</md-text-button>
+        <md-text-button href="#experience" data-i18n="nav.experience">Expérience</md-text-button>
+        <md-text-button href="#contact" data-i18n="nav.contact">Contact</md-text-button>
+        
+        <div style="position: relative;"> 
+            <md-text-button id="lang-button">
+              <md-icon slot="icon">language</md-icon>
+              <span id="current-lang-text">FR</span>
+            </md-text-button>
 
+            <md-menu id="lang-menu" anchor="lang-button" positioning="popover">
+              <md-menu-item data-lang="fr">
+                <div slot="headline">Français</div>
+              </md-menu-item>
+              <md-menu-item data-lang="en">
+                <div slot="headline">English</div>
+              </md-menu-item>
+            </md-menu>
+        </div>
+        
         <div class="theme-selector">
-          <label for="theme-color">Thème</label>
+          <label for="theme-color" data-i18n="nav.theme">Thème</label>
           <input type="color" id="theme-color" value="#2184b2">
         </div>
       </div>
@@ -40,43 +56,42 @@
   <main>
     <div class="cv-container">
       <md-filled-button href="https://soluceplay.go.yo.fr/assets/cv_duncan_langrume.pdf" target="_blank">
-        Voir mon CV
+        <span data-i18n="hero.view_cv">Voir mon CV</span>
         <md-icon slot="icon">description</md-icon>
       </md-filled-button>
     </div>
 
     <section class="competences" id="competences">
-      <h2>Compétences</h2>
+      <h2 data-i18n="skills.title">Compétences</h2>
       <md-list class="material-card rounded-list">
         <md-list-item>
-          <div slot="headline">Piano</div>
+          <div slot="headline" data-i18n="skills.piano">Piano</div>
           <md-icon slot="start">music_note</md-icon>
         </md-list-item>
         <md-list-item>
-          <div slot="headline">Électricité</div>
+          <div slot="headline" data-i18n="skills.electricity">Électricité</div>
           <md-icon slot="start">bolt</md-icon>
         </md-list-item>
         <md-list-item>
-          <div slot="headline">Film</div>
+          <div slot="headline" data-i18n="skills.film">Film</div>
           <md-icon slot="start">movie</md-icon>
         </md-list-item>
       </md-list>
     </section>
 
     <section class="experience" id="experience">
-      <h2>Expérience Professionnelle</h2>
+      <h2 data-i18n="experience.title">Expérience Professionnelle</h2>
       <md-list class="material-card rounded-list">
         <md-list-item type="link" href="https://elecn-caux.fr/" target="_blank">
           <div slot="headline">ELEC'N CAUX</div>
-          <div slot="supporting-text">Passage de câble</div>
+          <div slot="supporting-text" data-i18n="experience.job1.task">Passage de câble</div>
           <div slot="trailing-supporting-text">02/2024 - 03/2024</div>
           <md-icon slot="start">work</md-icon>
         </md-list-item>
         <md-divider></md-divider>
-        <md-list-item type="link" href="https://www.normandie-energies.com/membre/garczynski-traploir-yvetot/"
-          target="_blank">
+        <md-list-item type="link" href="https://www.normandie-energies.com/membre/garczynski-traploir-yvetot/" target="_blank">
           <div slot="headline">Garczynski Traploir</div>
-          <div slot="supporting-text">Réparation des illuminations de Noël</div>
+          <div slot="supporting-text" data-i18n="experience.job2.task">Réparation des illuminations de Noël</div>
           <div slot="trailing-supporting-text">06/2024 - 07/2024</div>
           <md-icon slot="start">handyman</md-icon>
         </md-list-item>
@@ -84,8 +99,7 @@
     </section>
 
     <section class="contact" id="contact">
-      <h2>Contact</h2>
-      <md-list class="material-card rounded-list">
+      <h2 data-i18n="contact.title">Contact</h2> <md-list class="material-card rounded-list">
         <md-list-item type="link" href="tel:+33651405839">
           <div slot="headline">06 51 40 58 39</div>
           <md-icon slot="start">phone</md-icon>
@@ -99,5 +113,4 @@
     </section>
   </main>
 </body>
-
 </html>
