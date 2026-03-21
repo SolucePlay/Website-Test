@@ -28,23 +28,23 @@
         <md-text-button href="#competences" data-i18n="nav.skills">Compétences</md-text-button>
         <md-text-button href="#experience" data-i18n="nav.experience">Expérience</md-text-button>
         <md-text-button href="#contact" data-i18n="nav.contact">Contact</md-text-button>
-        
-        <div style="position: relative;"> 
-            <md-text-button id="lang-button">
-              <md-icon slot="icon">language</md-icon>
-              <span id="current-lang-text">FR</span>
-            </md-text-button>
 
-            <md-menu id="lang-menu" anchor="lang-button" positioning="popover">
-              <md-menu-item data-lang="fr">
-                <div slot="headline">Français</div>
-              </md-menu-item>
-              <md-menu-item data-lang="en">
-                <div slot="headline">English</div>
-              </md-menu-item>
-            </md-menu>
+        <div style="position: relative;">
+          <md-text-button id="lang-button">
+            <md-icon slot="icon">language</md-icon>
+            <span id="current-lang-text">FR</span>
+          </md-text-button>
+
+          <md-menu id="lang-menu" anchor="lang-button" positioning="popover">
+            <md-menu-item data-lang="fr">
+              <div slot="headline">Français</div>
+            </md-menu-item>
+            <md-menu-item data-lang="en">
+              <div slot="headline">English</div>
+            </md-menu-item>
+          </md-menu>
         </div>
-        
+
         <div class="theme-selector">
           <label for="theme-color" data-i18n="nav.theme">Thème</label>
           <input type="color" id="theme-color" value="#2184b2">
@@ -62,7 +62,7 @@
     </div>
 
     <section class="competences" id="competences">
-      <h2 data-i18n="skills.title">Compétences</h2>
+      <h2 data-i18n="skills.title" class="md-typescale-headline-medium">Compétences</h2>
       <md-list class="material-card rounded-list">
         <md-list-item>
           <div slot="headline" data-i18n="skills.piano">Piano</div>
@@ -80,7 +80,7 @@
     </section>
 
     <section class="experience" id="experience">
-      <h2 data-i18n="experience.title">Expérience Professionnelle</h2>
+      <h2 data-i18n="experience.title" class="md-typescale-headline-medium">Expérience Professionnelle</h2>
       <md-list class="material-card rounded-list">
         <md-list-item type="link" href="https://elecn-caux.fr/" target="_blank">
           <div slot="headline">ELEC'N CAUX</div>
@@ -89,7 +89,8 @@
           <md-icon slot="start">work</md-icon>
         </md-list-item>
         <md-divider></md-divider>
-        <md-list-item type="link" href="https://www.normandie-energies.com/membre/garczynski-traploir-yvetot/" target="_blank">
+        <md-list-item type="link" href="https://www.normandie-energies.com/membre/garczynski-traploir-yvetot/"
+          target="_blank">
           <div slot="headline">Garczynski Traploir</div>
           <div slot="supporting-text" data-i18n="experience.job2.task">Réparation des illuminations de Noël</div>
           <div slot="trailing-supporting-text">06/2024 - 07/2024</div>
@@ -98,8 +99,32 @@
       </md-list>
     </section>
 
+    <section id="projets">
+      <h2 class="md-typescale-headline-medium">Mes Projets</h2>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+
+        <div
+          style="position: relative; width: 300px; border-radius: 12px; overflow: hidden; background: var(--md-sys-color-surface-container-highest);">
+          <md-ripple></md-ripple> <img src="./img/monassistant_panel.jpeg" alt="Projet"
+            style="width: 100%; height: 150px; object-fit: cover;">
+          <div style="padding: 16px;">
+            <h3 class="md-typescale-title-large" style="margin: 0; color: var(--md-sys-color-on-surface);">Mon Assistant
+            </h3>
+            <p class="md-typescale-body-medium" style="color: var(--md-sys-color-on-surface-variant);">L'application de gestion d'activité pensée pour être à la fois élégante, intuitive et totalement respectueuse de votre vie privée.</p>
+            <div style="display: flex; justify-content: flex-end; margin-top: 16px;">
+              <md-text-button href="https://soluceplay.go.yo.fr/mon-assistant.php">
+                Voir plus
+              </md-text-button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <section class="contact" id="contact">
-      <h2 data-i18n="contact.title">Contact</h2> <md-list class="material-card rounded-list">
+      <h2 data-i18n="contact.title" class="md-typescale-headline-medium">Contact</h2>
+      <md-list class="material-card rounded-list">
         <md-list-item type="link" href="tel:+33651405839">
           <div slot="headline">06 51 40 58 39</div>
           <md-icon slot="start">phone</md-icon>
@@ -113,4 +138,5 @@
     </section>
   </main>
 </body>
+
 </html>
