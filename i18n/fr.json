@@ -3,17 +3,21 @@
     "skills": "Compétences",
     "experience": "Expérience",
     "contact": "Contact",
-    "language":"Langue",
+    "language": "Langue",
     "theme": "Thème"
   },
   "hero": {
     "view_cv": "Voir mon CV"
   },
   "skills": {
-    "title": "Compétences",
-    "piano": "Piano",
-    "electricity": "Électricité",
-    "film": "Film"
+    "title": "Compétences Techniques",
+    "html_css": "HTML5 / CSS3",
+    "js": "JavaScript (ES6+)",
+    "frameworks": "Web Components & Material Design"
+  },
+  "projects": {
+    "title": "Mes Projets",
+    "coming_soon": "Bientôt disponible..."
   },
   "experience": {
     "title": "Expérience Professionnelle",

@@ -9,11 +9,15 @@
   "hero": {
     "view_cv": "View my CV"
   },
-  "skills": {
-    "title": "Skills",
-    "piano": "Piano",
-    "electricity": "Electricity",
-    "film": "Film"
+"skills": {
+    "title": "Technical Skills",
+    "html_css": "HTML5 / CSS3",
+    "js": "JavaScript (ES6+)",
+    "frameworks": "Web Components & Material Design"
+  },
+  "projects": {
+    "title": "My Projects",
+    "coming_soon": "Coming soon..."
   },
   "experience": {
     "title": "Professional Experience",
